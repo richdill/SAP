@@ -1,3 +1,6 @@
+These 11 pipelines represent various ways you can read and write SAP ECC using SnapLogic pipelines.
+
+
 The SAP to Snowflake, ELT, send to salesforce pipeline orchestrates a complete data integration workflow by executing three sequential child pipelines. It handles the end-to-end process of retrieving new order data from SAP, processing and merging that data into Snowflake using ELT operations, and finally sending the processed data to Salesforce.
 
 Snap Summary:
