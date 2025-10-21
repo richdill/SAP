@@ -1,0 +1,40 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: <Cluster_name>-example-<team_name>
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  description: used by <team_name> team for <example> environment.
+  sourceRepos:
+  - '*'
+  destinations:
+  - namespace: argocd
+    server: https://kubernetes.default.svc
+    name: in-cluster
+  - namespace: example-<team_name>
+    name: <Cluster_name
+    server: <cluster_endpoint>
+  clusterResourceWhitelist:
+  - group: ''
+    kind: ''
+
+  namespaceResourceBlacklist:
+  - group: ''
+    kind: ResourceQuota
+  - group: ''
+    kind: LimitRange
+  - group: ''
+    kind: NetworkPolicy
+
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: '*'
+
+  orphanedResources:
+    warn: false
+  permitOnlyProjectScopedClusters: false
+
+  sourceNamespaces:
+  - "argocd-apps-*"

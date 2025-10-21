@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: example-<team_name>
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: example-<team_name>-quotas
+  namespace: example-<team_name>
+spec:
+  hard:
+    requests.cpu: "8"
+    requests.memory: 32Gi
+    limits.cpu: "8"
+    limits.memory: 32Gi
